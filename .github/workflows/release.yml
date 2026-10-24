@@ -1,0 +1,62 @@
+name: Build & Release RemoteDesk Free
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    name: Build Windows Binaries & Create Release
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Install Rust Toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: x86_64-pc-windows-msvc
+
+      - name: Setup Node.js (for PDF Guide & Docs)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run Cargo Test Suite
+        run: cargo test --all
+
+      - name: Build Rust Release Binaries
+        run: |
+          cargo build --release
+          Copy-Item target/release/remotedesk-app.exe RemoteDesk-Free.exe -Force
+          Copy-Item target/release/remotedesk-server.exe RemoteDesk-Server.exe -Force
+
+      - name: Generate Illustrated PDF User Guide
+        run: node generate_pdf_guide.js
+
+      - name: Compile Inno Setup Installer
+        run: |
+          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer.iss
+          Copy-Item dist/RemoteDesk-Free-Setup-v1.1.0.1.exe RemoteDesk-Free-Setup-v1.1.0.1.exe -Force
+
+      - name: Create GitHub Release & Upload Assets
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          name: RemoteDesk Free ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+          files: |
+            RemoteDesk-Free-Setup-v1.1.0.1.exe
+            RemoteDesk-Free.exe
+            RemoteDesk-Server.exe
+            RemoteDesk-Free-User-Guide.pdf
+            LICENSE
+            THIRD_PARTY_LICENSES.md

@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RemoteDesk Free - Enterprise Remote Desktop</title>
+  <link rel="icon" type="image/png" href="icon.png">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%231E40AF'/%3E%3Cpath d='M21 13.5 L17.5 17.5 L19.8 17.8 L18.5 22.5 L23 18.2 L20.5 18 L21.5 13.5 Z' fill='%2338BDF8'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Fixed Enterprise Sidebar -->
+  <aside class="sidebar">
+    <div>
+      <div class="sidebar-header">
+        <div class="logo-box">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="rd-bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#1E3A8A"/>
+                <stop offset="50%" stop-color="#2563EB"/>
+                <stop offset="100%" stop-color="#0284C7"/>
+              </linearGradient>
+              <linearGradient id="rd-glass-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#0B1329"/>
+                <stop offset="100%" stop-color="#1E293B"/>
+              </linearGradient>
+              <linearGradient id="rd-bolt-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF"/>
+                <stop offset="50%" stop-color="#38BDF8"/>
+                <stop offset="100%" stop-color="#0284C7"/>
+              </linearGradient>
+            </defs>
+            <rect x="2" y="2" width="36" height="36" rx="9" fill="url(#rd-bg-grad)"/>
+            <rect x="2.5" y="2.5" width="35" height="35" rx="8.5" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+            <rect x="18" y="28" width="4" height="4" rx="1" fill="#94A3B8"/>
+            <ellipse cx="20" cy="32" rx="7" ry="1.8" fill="#CBD5E1"/>
+            <rect x="7" y="9" width="26" height="19" rx="2.5" fill="#0F172A" stroke="#334155" stroke-width="0.8"/>
+            <rect x="8.5" y="10.5" width="23" height="15" rx="1.5" fill="url(#rd-glass-grad)"/>
+            <circle cx="30" cy="26" r="0.8" fill="#22C55E"/>
+            <circle cx="12.5" cy="18" r="1.8" fill="#38BDF8"/>
+            <circle cx="12.5" cy="18" r="0.8" fill="#FFFFFF"/>
+            <path d="M10 15.5 A 3.5 3.5 0 0 0 10 20.5" stroke="#38BDF8" stroke-width="0.8" stroke-linecap="round" fill="none" opacity="0.8"/>
+            <circle cx="27.5" cy="18" r="1.8" fill="#60A5FA"/>
+            <circle cx="27.5" cy="18" r="0.8" fill="#FFFFFF"/>
+            <path d="M30 15.5 A 3.5 3.5 0 0 1 30 20.5" stroke="#60A5FA" stroke-width="0.8" stroke-linecap="round" fill="none" opacity="0.8"/>
+            <path d="M21 13.5 L17.5 17.5 L19.8 17.8 L18.5 22.5 L23 18.2 L20.5 18 L21.5 13.5 Z" fill="url(#rd-bolt-grad)"/>
+          </svg>
+        </div>
+        <div class="brand-info">
+          <div class="logo-text">RemoteDesk <span class="logo-badge">v1.1.0.1</span></div>
+          <div class="company-tagline">Freeware | Suresh Mamidala</div>
+        </div>
+      </div>
+
+      <nav class="sidebar-menu">
+        <button class="sidebar-item active" data-tab="dashboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          Dashboard
+        </button>
+        <button class="sidebar-item" data-tab="filemanager">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+          </svg>
+          File Manager
+        </button>
+        <button class="sidebar-item" data-tab="sessions">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+          Address Book
+        </button>
+        <button class="sidebar-item" data-tab="security">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          Security & Audit
+        </button>
+        <button class="sidebar-item" data-tab="settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+          Network & WebRTC
+        </button>
+      </nav>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="corporate-meta-card">
+        <div class="meta-row">
+          <span class="meta-label">Publisher</span>
+          <span class="meta-val">Suresh Mamidala</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Company</span>
+          <span class="meta-val">Freeware</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Release</span>
+          <span class="meta-val version-chip">v1.1.0.1</span>
+        </div>
+      </div>
+      <div class="node-card">
+        <div class="node-title">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span class="status-pulse-dot"></span>
+            <span>Signaling Node</span>
+          </div>
+          <span class="badge badge-success">Online</span>
+        </div>
+        <div class="node-subtext" id="sidebar-node-ip">127.0.0.1:8088</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Application Wrapper -->
+  <div class="main-wrapper">
+    <!-- Clean Top Navigation Bar -->
+    <header class="top-nav">
+      <div class="nav-breadcrumb">
+        <span class="breadcrumb-root">RemoteDesk</span>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-active" id="active-breadcrumb-title">Dashboard</span>
+        <span class="version-chip" style="font-size: 10.5px; margin-left: 6px;">v1.1.0.1</span>
+      </div>
+      <div class="top-nav-right">
+        <div class="status-pill">
+          <span class="status-dot online" id="agent-status-dot"></span>
+          <span id="agent-status-text">Network Ready &bull; P2P WebRTC</span>
+        </div>
+        <button class="icon-btn" id="theme-toggle" title="Toggle Light / Dark Mode">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Banner when Remote Sessions are Minimized to Dashboard -->
+    <div id="minimized-sessions-banner" class="minimized-sessions-banner" style="display: none;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span class="status-dot online"></span>
+        <strong id="minimized-sessions-count">1 Active Remote Session</strong>
+        <span id="minimized-sessions-list" style="color: #94A3B8; font-size: 13px;"></span>
+      </div>
+      <div style="display: flex; gap: 8px;">
+        <button class="btn btn-primary btn-xs" id="btn-resume-session">🖥️ Return to Remote Screen</button>
+        <button class="btn btn-danger btn-xs" id="btn-close-all-minimized">Disconnect All</button>
+      </div>
+    </div>
+
+    <!-- Spacious Content Area -->
+    <main class="content-area">
+      <!-- TAB 1: Dashboard -->
+      <section class="tab-pane active" id="tab-dashboard">
+        <div class="dashboard-hero">
+          <!-- Card 1: This Desk (Host / Agent) -->
+          <div class="card">
+            <div class="card-title-row">
+              <div>
+                <div class="card-title">This Desk</div>
+                <div class="card-desc">Share this identifier to allow remote access</div>
+              </div>
+              <span class="badge badge-success">Host Ready</span>
+            </div>
+
+            <div class="id-hero-box">
+              <div class="id-label">Your Remote ID</div>
+              <div class="id-number" id="my-desk-id">--- --- ---</div>
+              <div class="id-net-meta" id="lan-ip-badge">Network: Auto-Signaling Active (0.0.0.0:8088)</div>
+              <button class="btn btn-secondary btn-sm" id="copy-id-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copy Device ID
+              </button>
+            </div>
+
+            <div class="pin-row">
+              <div>
+                <span>One-Time Session PIN:</span>
+                <strong class="pin-val" id="session-pin-text">------</strong>
+              </div>
+              <button class="btn-link" id="refresh-pin-btn">Regenerate PIN</button>
+            </div>
+
+            <div style="font-size: 12px; color: var(--text-muted);">
+              <strong>Interactive Authorization Policy:</strong> Incoming connection requests must be accepted by you before any remote screen or input control is granted.
+            </div>
+          </div>
+
+          <!-- Card 2: Remote Desk (Viewer / Client) -->
+          <div class="card">
+            <div class="card-title-row">
+              <div>
+                <div class="card-title">Connect to Remote Desk</div>
+                <div class="card-desc">Enter peer ID to start a live support session</div>
+              </div>
+              <span class="badge badge-success">Worldwide • No Geo Limits</span>
+            </div>
+
+            <div class="form-group" style="margin-top: 18px;">
+              <label class="form-label" for="target-id-input">Target Device ID / Network IP</label>
+              <div class="input-with-button">
+                <input type="text" id="target-id-input" class="form-input" placeholder="e.g. 123 456 789 or 192.168.1.50" autocomplete="off" />
+                <button class="btn btn-primary" id="connect-btn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                  Connect
+                </button>
+              </div>
+            </div>
+
+            <details style="margin-top: 16px; font-size: 13px; color: var(--text-muted);">
+              <summary style="cursor: pointer; font-weight: 600; color: var(--primary);">Security Credentials & Permissions</summary>
+              <div style="margin-top: 12px; display: flex; flex-direction: column; gap: 10px;">
+                <div>
+                  <label class="form-label" for="target-pin-input">Session PIN (Optional):</label>
+                  <input type="password" id="target-pin-input" class="form-input" placeholder="Enter remote PIN if required" />
+                </div>
+                <div>
+                  <label class="form-label" for="target-unattended-pwd">Unattended Master Password:</label>
+                  <input type="password" id="target-unattended-pwd" class="form-input" placeholder="Enter password for unattended administration" />
+                </div>
+                <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-top: 6px;">
+                  <label><input type="checkbox" id="perm-view" checked /> View Screen</label>
+                  <label><input type="checkbox" id="perm-control" checked /> Remote Control</label>
+                  <label><input type="checkbox" id="perm-clipboard" checked /> Clipboard</label>
+                  <label><input type="checkbox" id="perm-files" checked /> File Transfer</label>
+                </div>
+              </div>
+            </details>
+
+            <div id="connection-status-msg" style="margin-top: 14px; font-size: 13px; font-weight: 500;"></div>
+          </div>
+        </div>
+
+        <!-- Recent Connections Card -->
+        <div class="card">
+          <div class="card-title-row">
+            <div>
+              <div class="card-title">Recent Connections</div>
+              <div class="card-desc">Quickly reconnect to recently managed computers</div>
+            </div>
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <button class="btn btn-secondary btn-xs" id="btn-clear-recent" title="Clear non-bookmarked recent connections">🗑 Clear History</button>
+            </div>
+          </div>
+          <div class="table-wrapper">
+            <table class="saas-table" id="recent-table">
+              <thead>
+                <tr>
+                  <th>Device ID</th>
+                  <th>Computer Name</th>
+                  <th>Last Accessed</th>
+                  <th>Group</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="recent-table-body">
+                <tr><td colspan="5" style="text-align: center; color: var(--text-muted);">No recent sessions recorded yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: File Manager -->
+      <section class="tab-pane" id="tab-filemanager">
+        <div class="card">
+          <div class="card-title-row">
+            <div>
+              <div class="card-title">Dual-Pane File Manager</div>
+              <div class="card-desc">Cryptographically verified (SHA-256) 64 KB chunked file transfer</div>
+            </div>
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <label class="btn btn-primary btn-xs" style="cursor: pointer; display: inline-flex; align-items: center; gap: 6px; font-weight: 600;">
+                <span>📤 Direct Upload Any File...</span>
+                <input type="file" id="tab-direct-upload-input" style="display: none;" />
+              </label>
+            </div>
+          </div>
+
+          <div class="dual-pane">
+            <div class="pane-box">
+              <div class="pane-header">
+                <span>Local Machine</span>
+                <div style="display: flex; gap: 4px;">
+                  <button class="btn btn-secondary btn-xs" onclick="navigateLocalDir('up')">⬆ Up</button>
+                  <button class="btn btn-secondary btn-xs" onclick="navigateLocalDir('downloads')">📥 Downloads</button>
+                  <button class="btn btn-secondary btn-xs" onclick="navigateLocalDir('desktop')">🖥️ Desktop</button>
+                  <button class="btn btn-secondary btn-xs" onclick="navigateLocalDir('c:\\')">💽 C:\</button>
+                  <button class="btn btn-secondary btn-xs" id="local-refresh-btn">🔄</button>
+                </div>
+              </div>
+              <div style="padding: 6px 10px; border-bottom: 1px solid var(--border);">
+                <input type="text" id="local-path" class="form-input" value="C:\" readonly style="height: 30px; font-size: 12px;" />
+              </div>
+              <div class="file-view" id="local-file-list"></div>
+            </div>
+
+            <div class="pane-actions">
+              <button class="btn btn-primary btn-sm" id="btn-upload">&rarr; Upload</button>
+              <button class="btn btn-secondary btn-sm" id="btn-download">&larr; Download</button>
+            </div>
+
+            <div class="pane-box">
+              <div class="pane-header">
+                <span>Remote Machine</span>
+                <div style="display: flex; gap: 4px;">
+                  <button class="btn btn-secondary btn-xs" onclick="navigateRemoteDir('up')">⬆ Up</button>
+                  <button class="btn btn-secondary btn-xs" onclick="navigateRemoteDir('downloads')">📥 Downloads</button>
+                  <button class="btn btn-secondary btn-xs" onclick="navigateRemoteDir('desktop')">🖥️ Desktop</button>
+                  <button class="btn btn-secondary btn-xs" onclick="navigateRemoteDir('c:\\')">💽 C:\</button>
+                  <button class="btn btn-secondary btn-xs" id="remote-refresh-btn">🔄</button>
+                </div>
+              </div>
+              <div style="padding: 6px 10px; border-bottom: 1px solid var(--border);">
+                <input type="text" id="remote-path" class="form-input" value="C:\" readonly style="height: 30px; font-size: 12px;" />
+              </div>
+              <div class="file-view" id="remote-file-list">
+                <div style="padding: 20px; text-align: center; color: var(--text-muted); font-size: 13px;">Connect to a remote machine to browse remote filesystem.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Transfer Progress Bar -->
+          <div id="tab-transfer-progress-box" style="margin-top: 14px; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; font-size: 12px;">
+              <span id="tab-transfer-status-text" style="font-weight: 600; color: var(--text-main);">File Transfer Engine: Ready</span>
+              <span id="tab-transfer-progress-percent" style="font-family: monospace; color: var(--primary);">0%</span>
+            </div>
+            <div style="width: 100%; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden;">
+              <div id="tab-transfer-progress-bar" style="width: 0%; height: 100%; background: var(--primary); transition: width 0.15s ease;"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: Address Book -->
+      <section class="tab-pane" id="tab-sessions">
+        <div class="card">
+          <div class="card-title-row">
+            <div>
+              <div class="card-title">Address Book & Saved Devices</div>
+              <div class="card-desc">Persistent device list with group tagging, friendly aliases, and 1-click access</div>
+            </div>
+            <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+              <select id="filter-device-group" class="form-input" style="height: 34px; font-size: 13px; width: 130px; padding: 2px 8px;">
+                <option value="all">All Groups</option>
+                <option value="Work">Work</option>
+                <option value="Servers">Servers</option>
+                <option value="Clients">Clients</option>
+                <option value="Support">Support</option>
+                <option value="Personal">Personal</option>
+                <option value="General">General</option>
+              </select>
+              <input type="text" id="search-devices" class="form-input" placeholder="🔍 Search ID, alias, tag..." style="max-width: 220px; height: 34px;" />
+              <button class="btn btn-primary btn-sm" id="btn-open-add-device" style="display: flex; align-items: center; gap: 6px; font-weight: 600;">
+                <span>➕ Add Device</span>
+              </button>
+            </div>
+          </div>
+          <div class="table-wrapper">
+            <table class="saas-table" id="saved-devices-table">
+              <thead>
+                <tr>
+                  <th>Device ID</th>
+                  <th>Alias / Hostname</th>
+                  <th>Tag / Group</th>
+                  <th>Last Seen</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="saved-devices-body">
+                <tr><td colspan="5" style="text-align: center; color: var(--text-muted);">No saved devices in address book.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: Security & Audit -->
+      <section class="tab-pane" id="tab-security">
+        <div class="card" style="margin-bottom: 24px;">
+          <div class="card-title-row">
+            <div>
+              <div class="card-title">Unattended Administrative Access</div>
+              <div class="card-desc">Configure salted PBKDF2/SHA-256 master password for unattended IT management</div>
+            </div>
+          </div>
+          <div style="margin: 14px 0;">
+            <label style="font-weight: 600; font-size: 14px;">
+              <input type="checkbox" id="unattended-enabled-toggle" />
+              Enable Unattended Access on This Machine
+            </label>
+          </div>
+          <div id="unattended-config-panel" style="display: none; margin-top: 14px;">
+            <div class="form-group">
+              <label class="form-label" for="unattended-pwd-input">Master Password (min 8 characters):</label>
+              <input type="password" id="unattended-pwd-input" class="form-input" placeholder="Enter master password" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="unattended-pwd-confirm">Confirm Password:</label>
+              <input type="password" id="unattended-pwd-confirm" class="form-input" placeholder="Re-enter password" />
+            </div>
+            <button class="btn btn-primary btn-sm" id="save-unattended-pwd-btn">Save Unattended Credentials</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title-row">
+            <div>
+              <div class="card-title">Security Audit Log</div>
+              <div class="card-desc">Persistent tamper-evident log stored in %APPDATA%\RemoteDeskFree\audit.json</div>
+            </div>
+          </div>
+          <div class="table-wrapper">
+            <table class="saas-table">
+              <thead>
+                <tr>
+                  <th>Timestamp</th>
+                  <th>Event</th>
+                  <th>Peer ID</th>
+                  <th>Peer IP</th>
+                  <th>Outcome</th>
+                  <th>Details</th>
+                </tr>
+              </thead>
+              <tbody id="audit-log-body">
+                <tr><td colspan="6" style="text-align: center; color: var(--text-muted);">No security events recorded yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: Network & WebRTC -->
+      <section class="tab-pane" id="tab-settings">
+        <div class="card" style="margin-bottom: 24px;">
+          <div class="card-title-row">
+            <div>
+              <div class="card-title">Network & Signaling Infrastructure</div>
+              <div class="card-desc">Supports embedded self-hosting, Node.js signaling, and custom cloud endpoints</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="setting-signaling-server">Signaling Server Endpoint (WebSocket):</label>
+            <input type="text" id="setting-signaling-server" class="form-input" value="ws://127.0.0.1:8088/ws" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="setting-device-alias">Local Device Computer Name:</label>
+            <input type="text" id="setting-device-alias" class="form-input" value="My Computer" />
+          </div>
+          <div class="form-group" style="display: flex; align-items: center; gap: 8px; margin-top: 10px;">
+            <input type="checkbox" id="setting-relay-toggle" checked />
+            <label class="form-label" for="setting-relay-toggle" style="margin-bottom: 0;">Enable Secure Cloud Relay Fallback</label>
+          </div>
+          <button class="btn btn-primary btn-sm" id="save-settings-btn">Save Settings</button>
+        </div>
+
+        <div class="card">
+          <div class="card-title-row">
+            <div>
+              <div class="card-title">WebRTC & coturn (STUN/TURN) Topology</div>
+              <div class="card-desc">Direct P2P DataChannels with fallback to coturn TURN relays</div>
+            </div>
+            <span class="badge badge-success">RFC 5766 Compliant</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">STUN Traversal Servers:</label>
+            <input type="text" class="form-input" value="stun.l.google.com, stun.cloudflare.com, stun.services.mozilla.com, openrelay.metered.ca" readonly />
+          </div>
+          <div class="form-group">
+            <label class="form-label">coturn & OpenRelay TURN Relay (Symmetric NAT Traversal):</label>
+            <input type="text" class="form-input" value="turn:openrelay.metered.ca:443 (TCP/UDP), turn:openrelay.metered.ca:80" readonly />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Cross-Network Rendezvous Broker:</label>
+            <input type="text" class="form-input" value="Multi-Broker Cloud Rendezvous (EMQX / HiveMQ / Mosquitto • Any Network Worldwide)" readonly />
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- In-Session Remote Viewer Overlay -->
+  <div class="session-overlay" id="session-viewer-overlay" style="display: none;">
+    <div class="session-toolbar">
+      <div style="display: flex; align-items: center; gap: 6px; flex-shrink: 0; min-width: 0;">
+        <!-- Multi-Client Remote Session Tabs -->
+        <div class="session-tabs-bar" id="session-tabs-bar">
+          <!-- Dynamic session tabs generated via JS -->
+        </div>
+        <button class="btn btn-outline btn-xs" id="btn-add-session" style="color: #94A3B8; border: 1px dashed #334155; font-size: 11px; white-space: nowrap; padding: 2px 6px;" title="Connect to another remote machine concurrently">+ Add</button>
+        <div style="height: 16px; width: 1px; background: #334155; margin: 0 2px;"></div>
+        <strong id="session-peer-title" style="font-size: 11.5px; white-space: nowrap; max-width: 140px; overflow: hidden; text-overflow: ellipsis;">Connected: ---</strong>
+        <span class="session-stat" id="stat-fps" title="Live Video Stream Framerate">30 FPS</span>
+        <span class="session-stat" id="stat-latency" title="Real-time Network Latency">&lt; 15 ms</span>
+        <span class="session-stat" id="stat-quality" title="Streaming Transport and Resolution">HD Ready</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 5px; flex-shrink: 0; position: relative;">
+        <!-- 🚀 Instant Quick Shortcuts Bar -->
+        <button class="btn btn-secondary btn-xs" onclick="triggerSystemAction('run_dialog')" title="Open Run Dialog (Win + R) on Remote PC" style="font-weight: 600; padding: 2px 6px;">
+          <span>▶️ Run</span>
+        </button>
+        <button class="btn btn-secondary btn-xs" onclick="triggerSystemAction('task_manager')" title="Open Task Manager (Ctrl + Shift + Esc) on Remote PC" style="font-weight: 600; padding: 2px 6px;">
+          <span>💻 TaskMgr</span>
+        </button>
+        <button class="btn btn-secondary btn-xs" onclick="triggerSystemAction('win_key')" title="Open Windows Start Menu on Remote PC" style="font-weight: 600; padding: 2px 6px;">
+          <span>🪟 Win</span>
+        </button>
+        <span class="session-stat" id="keyboard-passthrough-badge" title="All keyboard shortcuts are active and passed directly to the remote computer" style="background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3); font-size: 11px; cursor: pointer; padding: 2px 6px;" onclick="toggleKeyboardPassthrough()">⌨️ Remote</span>
+
+        <!-- ⚡ Quick Actions Dropdown -->
+        <div class="actions-dropdown-container" style="position: relative;">
+          <button class="btn btn-secondary btn-xs" id="btn-session-actions" style="font-weight: 600; display: flex; align-items: center; gap: 3px; padding: 2px 6px;" title="Send system commands and shortcuts">
+            <span>⚡ Actions ▾</span>
+          </button>
+          <div id="session-actions-menu" class="actions-menu" style="display: none; position: absolute; right: 0; top: 100%; margin-top: 6px; background: #0F172A; border: 1px solid #334155; border-radius: 6px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); min-width: 250px; z-index: 1200; overflow: hidden; padding: 4px 0;">
+            <button class="action-menu-item" onclick="triggerSystemAction('run_dialog')">▶️ Run Dialog (Win + R)</button>
+            <button class="action-menu-item" onclick="triggerSystemAction('task_manager')">💻 Task Manager (Ctrl + Shift + Esc)</button>
+            <button class="action-menu-item" onclick="triggerSystemAction('explorer')">📁 File Explorer (Win + E)</button>
+            <button class="action-menu-item" onclick="triggerSystemAction('show_desktop')">🖥️ Show Desktop (Win + D)</button>
+            <button class="action-menu-item" onclick="triggerSystemAction('quick_link_menu')">⚡ Quick Link Menu (Win + X)</button>
+            <button class="action-menu-item" onclick="triggerSystemAction('settings')">⚙️ Windows Settings (Win + I)</button>
+            <button class="action-menu-item" onclick="triggerSystemAction('search')">🔍 Search (Win + S)</button>
+            <button class="action-menu-item" onclick="triggerSystemAction('alt_tab')">🔀 Switch Window (Alt + Tab)</button>
+            <button class="action-menu-item" onclick="triggerSystemAction('alt_f4')">❌ Close Window (Alt + F4)</button>
+            <button class="action-menu-item" onclick="triggerSystemAction('win_key')">🪟 Windows Start Menu (Win)</button>
+            <button class="action-menu-item" onclick="triggerSystemAction('lock_workstation')">🔒 Lock Remote PC (Win + L)</button>
+            <button class="action-menu-item" onclick="triggerSystemAction('ctrl_alt_del')">⌨️ Send Ctrl + Alt + Del</button>
+            <div style="height: 1px; background: #1E293B; margin: 4px 0;"></div>
+            <button class="action-menu-item" onclick="openSendClipboardModal()">📋 Paste Clipboard Text to Remote...</button>
+          </div>
+        </div>
+
+        <select id="scaling-selector" class="form-input" style="height: 26px; font-size: 11px; padding: 1px 4px; width: 100px; background: #1E293B; color: #fff; border-color: #334155;">
+          <option value="fit" selected>Scale to Fit</option>
+          <option value="original">Original (1:1)</option>
+          <option value="stretch">Stretch</option>
+        </select>
+        <button class="btn btn-primary btn-xs" id="btn-toggle-filemanager" style="font-weight: 600; padding: 2px 6px;">📁 Files</button>
+        <button class="btn btn-secondary btn-xs" id="btn-toggle-chat" style="padding: 2px 6px;">💬 Chat</button>
+        <button class="btn btn-secondary btn-xs" id="btn-fullscreen" style="padding: 2px 6px;">🗖 Full</button>
+        <button class="btn btn-secondary btn-xs" id="btn-minimize-session" title="Minimize to Dashboard without disconnecting" style="padding: 2px 6px;">🗕 Min</button>
+        <button class="btn btn-danger btn-xs" id="btn-disconnect" style="padding: 2px 8px;">Disconnect</button>
+      </div>
+    </div>
+    <div class="canvas-viewport" id="canvas-container">
+      <canvas id="remote-screen-canvas" tabindex="0"></canvas>
+    </div>
+  </div>
+
+  <!-- Dedicated In-Session File Transfer Modal Overlay -->
+  <div id="session-filemanager-modal" class="modal-backdrop" style="display: none; z-index: 1050;">
+    <div class="modal-card" style="max-width: 960px; width: 95vw; height: 85vh; max-height: 85vh; display: flex; flex-direction: column; padding: 20px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 12px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 20px;">📁</span>
+          <div>
+            <div style="font-weight: 700; font-size: 16px;">Remote File Transfer & Manager</div>
+            <div style="font-size: 12px; color: var(--text-muted);" id="sfm-header-desc">Transfer files between your local system and connected remote desktop</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <label class="btn btn-primary btn-xs" style="cursor: pointer; display: inline-flex; align-items: center; gap: 6px; font-weight: 600;">
+            <span>📤 Direct Upload Any File...</span>
+            <input type="file" id="direct-upload-file-picker" style="display: none;" />
+          </label>
+          <button class="btn btn-ghost btn-xs" id="sfm-close-btn" style="font-size: 18px; line-height: 1; border: none; cursor: pointer; color: var(--text-main);">✕</button>
+        </div>
+      </div>
+
+      <!-- File Manager Dual-Pane Body -->
+      <div class="dual-pane" style="flex: 1; min-height: 0; margin-bottom: 12px; height: auto;">
+        <!-- Left Pane: Local Machine -->
+        <div class="pane-box" style="display: flex; flex-direction: column; min-height: 0;">
+          <div class="pane-header" style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <strong>💻 Local Machine</strong>
+            </div>
+            <div style="display: flex; gap: 4px;">
+              <button class="btn btn-secondary btn-xs" onclick="navigateLocalDir('up')">⬆ Up</button>
+              <button class="btn btn-secondary btn-xs" onclick="navigateLocalDir('downloads')">📥 Downloads</button>
+              <button class="btn btn-secondary btn-xs" onclick="navigateLocalDir('desktop')">🖥️ Desktop</button>
+              <button class="btn btn-secondary btn-xs" onclick="navigateLocalDir('c:\\')">💽 C:\</button>
+              <button class="btn btn-secondary btn-xs" id="sfm-local-refresh-btn">🔄</button>
+            </div>
+          </div>
+          <div style="padding: 6px 10px; border-bottom: 1px solid var(--border);">
+            <input type="text" id="sfm-local-path" class="form-input" value="C:\" readonly style="height: 30px; font-size: 12px;" />
+          </div>
+          <div class="file-view" id="sfm-local-file-list" style="flex: 1; overflow-y: auto;"></div>
+        </div>
+
+        <!-- Center Actions -->
+        <div class="pane-actions" style="display: flex; flex-direction: column; justify-content: center; gap: 10px; align-items: center;">
+          <button class="btn btn-primary btn-sm" id="sfm-btn-upload" style="width: 100%;">➡️ Upload</button>
+          <button class="btn btn-secondary btn-sm" id="sfm-btn-download" style="width: 100%;">⬅️ Download</button>
+        </div>
+
+        <!-- Right Pane: Remote Machine -->
+        <div class="pane-box" style="display: flex; flex-direction: column; min-height: 0;">
+          <div class="pane-header" style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <strong>🖥️ Remote Desktop</strong>
+            </div>
+            <div style="display: flex; gap: 4px;">
+              <button class="btn btn-secondary btn-xs" onclick="navigateRemoteDir('up')">⬆ Up</button>
+              <button class="btn btn-secondary btn-xs" onclick="navigateRemoteDir('downloads')">📥 Downloads</button>
+              <button class="btn btn-secondary btn-xs" onclick="navigateRemoteDir('desktop')">🖥️ Desktop</button>
+              <button class="btn btn-secondary btn-xs" onclick="navigateRemoteDir('c:\\')">💽 C:\</button>
+              <button class="btn btn-secondary btn-xs" id="sfm-remote-refresh-btn">🔄</button>
+            </div>
+          </div>
+          <div style="padding: 6px 10px; border-bottom: 1px solid var(--border);">
+            <input type="text" id="sfm-remote-path" class="form-input" value="C:\" readonly style="height: 30px; font-size: 12px;" />
+          </div>
+          <div class="file-view" id="sfm-remote-file-list" style="flex: 1; overflow-y: auto;">
+            <div style="padding: 20px; text-align: center; color: var(--text-muted); font-size: 13px;">Connecting to remote filesystem...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Transfer Status & Progress Bar -->
+      <div id="transfer-progress-box" style="background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 14px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; font-size: 12px;">
+          <span id="transfer-status-text" style="font-weight: 600; color: var(--text-main);">File Transfer Engine: Ready</span>
+          <span id="transfer-progress-percent" style="font-family: monospace; color: var(--primary);">0%</span>
+        </div>
+        <div style="width: 100%; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden;">
+          <div id="transfer-progress-bar" style="width: 0%; height: 100%; background: var(--primary); transition: width 0.15s ease;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for Concurrent New Remote Connection -->
+  <div id="new-connection-modal" class="modal-backdrop" style="display: none; z-index: 1060;">
+    <div class="modal-card" style="max-width: 440px;">
+      <div class="modal-title">Connect to Additional Remote Machine</div>
+      <div class="modal-desc" style="margin-bottom: 14px;">Connect and manage multiple remote computers in simultaneous session tabs.</div>
+      <div class="form-group">
+        <label class="form-label">Target Device ID / Network IP</label>
+        <input type="text" id="multi-target-id" class="form-input" placeholder="e.g. 771 234 890 or 192.168.1.50" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Session PIN (Optional)</label>
+        <input type="text" id="multi-target-pin" class="form-input" placeholder="6-digit PIN if requested" maxlength="6" />
+      </div>
+      <div id="multi-connect-status" style="font-size: 12px; margin-bottom: 12px; min-height: 16px;"></div>
+      <div style="display: flex; justify-content: flex-end; gap: 10px;">
+        <button class="btn btn-secondary btn-sm" id="multi-connect-cancel-btn">Cancel</button>
+        <button class="btn btn-primary btn-sm" id="multi-connect-confirm-btn">Connect & Open Tab</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Host In-Session Bar (visible on Host while being controlled) -->
+  <div id="host-session-widget" class="host-session-widget" style="display: none;">
+    <div class="host-session-info">
+      <span class="status-dot online"></span>
+      <div>
+        <div style="font-weight: 600; font-size: 13px;" id="host-clients-count">1 Remote Client Connected</div>
+        <div style="font-size: 11px; color: var(--text-muted);" id="host-session-peer-text">Device: --- --- ---</div>
+      </div>
+    </div>
+    <div class="host-session-actions">
+      <button class="btn btn-secondary btn-xs" id="host-btn-chat">💬 Chat</button>
+      <button class="btn btn-danger btn-xs" id="host-btn-disconnect">Disconnect All</button>
+    </div>
+  </div>
+
+  <!-- Global In-Session Chat Drawer (accessible by both Host and Viewer) -->
+  <div id="chat-drawer" class="chat-drawer" style="display: none;">
+    <div class="chat-header">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span class="status-dot online"></span>
+        <span>Session Chat</span>
+      </div>
+      <button class="btn btn-ghost btn-xs" id="chat-close-btn" style="color: #fff; border: none; background: transparent; cursor: pointer; font-size: 16px;">✕</button>
+    </div>
+    <div id="chat-messages" class="chat-messages"></div>
+    <div class="chat-footer">
+      <input type="text" id="chat-input" class="form-input" placeholder="Type a message to remote peer..." style="height: 32px; font-size: 12px; background: #1E293B; color: #fff; border-color: #334155; flex: 1;" />
+      <button class="btn btn-primary btn-xs" id="chat-send-btn" style="height: 32px; padding: 0 12px;">Send</button>
+    </div>
+  </div>
+
+  <!-- Interactive Incoming Connection Modal -->
+  <div class="modal-backdrop" id="incoming-modal" style="display: none;">
+    <div class="modal-box">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 14px;">
+        <div style="width: 40px; height: 40px; border-radius: 10px; background: rgba(0, 102, 204, 0.12); display: flex; align-items: center; justify-content: center; color: var(--primary); flex-shrink: 0;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+        </div>
+        <div>
+          <div class="modal-title" style="margin-bottom: 2px;">Incoming Remote Connection</div>
+          <p style="font-size: 12.5px; color: var(--text-muted);">A remote administrator is requesting permission to access this computer</p>
+        </div>
+      </div>
+      <div style="background-color: var(--surface-subtle); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 14px; margin-bottom: 16px; font-size: 13px; display: flex; flex-direction: column; gap: 6px;">
+        <div style="display: flex; justify-content: space-between;">
+          <span style="color: var(--text-muted);">Remote Device ID:</span>
+          <strong id="incoming-peer-id" style="font-family: var(--font-mono); color: var(--primary);">--- --- ---</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span style="color: var(--text-muted);">Computer Name:</span>
+          <span id="incoming-peer-name" style="font-weight: 600;">Remote User</span>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span style="color: var(--text-muted);">Network Address:</span>
+          <span id="incoming-peer-ip" style="font-family: var(--font-mono); font-size: 12px;">127.0.0.1</span>
+        </div>
+      </div>
+      <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.5px; margin-bottom: 8px;">Authorized Session Permissions</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12.5px; margin-bottom: 20px; background: var(--surface-subtle); padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border);">
+        <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;"><input type="checkbox" id="modal-perm-view" checked /> View Screen</label>
+        <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;"><input type="checkbox" id="modal-perm-control" checked /> Remote Control</label>
+        <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;"><input type="checkbox" id="modal-perm-clipboard" checked /> Clipboard</label>
+        <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;"><input type="checkbox" id="modal-perm-files" checked /> File Transfer</label>
+      </div>
+      <div style="display: flex; justify-content: flex-end; gap: 10px;">
+        <button class="btn btn-secondary btn-sm" id="modal-decline-btn" onclick="declineIncomingConnection()">Decline Request</button>
+        <button class="btn btn-primary btn-sm" id="modal-accept-btn" onclick="acceptIncomingConnection()">Accept Connection</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add / Edit Saved Device Modal -->
+  <div id="modal-saved-device" class="modal-backdrop" style="display: none; z-index: 1060;">
+    <div class="modal-card" style="max-width: 480px; width: 90vw;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 16px;">
+        <div style="font-weight: 700; font-size: 16px;" id="modal-device-title">➕ Add Device to Address Book</div>
+        <button class="btn btn-ghost btn-xs" id="btn-close-device-modal" style="font-size: 18px; line-height: 1; border: none; cursor: pointer; color: var(--text-main);">✕</button>
+      </div>
+      <form id="form-saved-device">
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Device ID (9-Digit)</label>
+          <input type="text" id="modal-device-id" class="form-input desk-input-format" placeholder="e.g. 123 456 789" required maxlength="11" style="font-family: monospace; font-size: 15px; font-weight: 700;" />
+        </div>
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Computer Name / Friendly Alias</label>
+          <input type="text" id="modal-device-alias" class="form-input" placeholder="e.g. Finance Server, John's Workstation" required />
+        </div>
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Group / Category</label>
+          <select id="modal-device-group" class="form-input" style="height: 38px;">
+            <option value="Work">Work</option>
+            <option value="Servers">Servers</option>
+            <option value="Clients">Clients</option>
+            <option value="Support">Support</option>
+            <option value="Personal">Personal</option>
+            <option value="General">General</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Quick Connect PIN (Optional for 1-click connect)</label>
+          <input type="password" id="modal-device-pin" class="form-input" placeholder="Optional PIN or password" />
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+          <button type="button" class="btn btn-secondary btn-sm" id="btn-cancel-device-modal">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm" style="font-weight: 600;">Save to Address Book</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Send Clipboard Modal -->
+  <div id="modal-send-clipboard" class="modal-backdrop" style="display: none; z-index: 1060;">
+    <div class="modal-card" style="max-width: 480px; width: 90vw;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 16px;">
+        <div style="font-weight: 700; font-size: 16px;">📋 Send Text / Paste to Remote</div>
+        <button class="btn btn-ghost btn-xs" id="btn-close-clipboard-modal" style="font-size: 18px; line-height: 1; border: none; cursor: pointer; color: var(--text-main);">✕</button>
+      </div>
+      <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Type or paste text below to inject directly into the remote active window as Unicode keystrokes:</p>
+      <textarea id="clipboard-text-input" class="form-input" rows="4" placeholder="Enter or paste text here..." style="width: 100%; font-family: monospace; font-size: 13px; margin-bottom: 16px;"></textarea>
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <button type="button" class="btn btn-secondary btn-xs" id="btn-read-local-clipboard">📋 Paste from My Clipboard</button>
+        <div style="display: flex; gap: 8px;">
+          <button type="button" class="btn btn-secondary btn-xs" id="btn-cancel-clipboard-modal">Cancel</button>
+          <button type="button" class="btn btn-primary btn-xs" id="btn-confirm-send-clipboard" style="font-weight: 600;">Inject Keystrokes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="mqtt.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

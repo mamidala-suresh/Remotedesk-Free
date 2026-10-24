@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFrameworks>net8.0-windows;net9.0-windows</TargetFrameworks>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>RemoteDesk.Wpf</RootNamespace>
+    <AssemblyName>RemoteDesk-Free-WPF</AssemblyName>
+    
+    <!-- Application Metadata -->
+    <Version>1.1.0.1</Version>
+    <AssemblyVersion>1.1.0.1</AssemblyVersion>
+    <FileVersion>1.1.0.1</FileVersion>
+    <Company>Freeware | Suresh Mamidala</Company>
+    <Authors>Suresh Mamidala</Authors>
+    <Product>RemoteDesk Free Windows Enterprise</Product>
+    <Copyright>Copyright (C) 2026 Suresh Mamidala</Copyright>
+    <Description>RemoteDesk Free - Native C# / WPF Client with C++ DXGI and GPU H.264 Engine</Description>
+    
+    <ApplicationIcon>..\icon.ico</ApplicationIcon>
+    <StartupObject>RemoteDesk.Wpf.App</StartupObject>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\icon.ico" Link="icon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\remotedesk_native.dll" Link="remotedesk_native.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

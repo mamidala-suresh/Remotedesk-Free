@@ -1,0 +1,66 @@
+<UserControl x:Class="RemoteDesk.Wpf.Views.RemoteViewControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="1280"
+             Focusable="True" Background="#050811">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Session Top Floating Control Bar -->
+        <Border Grid.Row="0" Background="#0F172ACC" BorderBrush="#334155" BorderThickness="0,0,0,1"
+                Padding="16,8" Panel.ZIndex="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Left: Multi-Session Tabs & Telemetry -->
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="⚡ CONNECTED" Foreground="#10B981" FontWeight="Bold" FontSize="11" VerticalAlignment="Center" Margin="0,0,16,0" />
+
+                    <!-- Live Telemetry Badges -->
+                    <Border Background="#1E293B" CornerRadius="4" Padding="8,4" Margin="0,0,8,0">
+                        <TextBlock Text="{Binding TelemetryFps}" Foreground="#10B981" FontWeight="SemiBold" FontSize="11" />
+                    </Border>
+                    <Border Background="#1E293B" CornerRadius="4" Padding="8,4" Margin="0,0,8,0">
+                        <TextBlock Text="{Binding TelemetryLatency}" Foreground="#38BDF8" FontWeight="SemiBold" FontSize="11" />
+                    </Border>
+                    <Border Background="#1E293B" CornerRadius="4" Padding="8,4" Margin="0,0,8,0">
+                        <TextBlock Text="{Binding TelemetryQuality}" Foreground="#CBD5E1" FontWeight="Medium" FontSize="11" />
+                    </Border>
+                    <Border Background="#1E293B" CornerRadius="4" Padding="8,4">
+                        <TextBlock Text="{Binding TelemetryTransport}" Foreground="#A855F7" FontWeight="Medium" FontSize="11" />
+                    </Border>
+                </StackPanel>
+
+                <!-- Right: Session Action Buttons -->
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button Content="▶️ Run (Win+R)" Style="{StaticResource FluentSecondaryButton}" Click="OnSendRunDialogClick" Margin="0,0,8,0" />
+                    <Button Content="💻 Task Manager" Style="{StaticResource FluentSecondaryButton}" Click="OnSendTaskManagerClick" Margin="0,0,8,0" />
+                    <Button Content="⌨️ Ctrl+Alt+Del" Style="{StaticResource FluentSecondaryButton}" Click="OnSendCtrlAltDelClick" Margin="0,0,8,0" />
+                    <Button Content="🔄 Request Keyframe" Style="{StaticResource FluentSecondaryButton}" Click="OnRequestKeyframeClick" Margin="0,0,8,0" />
+                    <Button Content="❌ Disconnect" Style="{StaticResource FluentSecondaryButton}" Background="#DC2626" BorderBrush="#B91C1C" Foreground="White" Click="OnDisconnectClick" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Remote Desktop Screen Surface Viewport -->
+        <Border Grid.Row="1" Background="#050811" ClipToBounds="True">
+            <Image x:Name="ScreenImage"
+                   Stretch="Uniform"
+                   RenderOptions.BitmapScalingMode="HighQuality"
+                   MouseMove="OnScreenMouseMove"
+                   MouseDown="OnScreenMouseDown"
+                   MouseUp="OnScreenMouseUp"
+                   MouseWheel="OnScreenMouseWheel" />
+        </Border>
+    </Grid>
+</UserControl>

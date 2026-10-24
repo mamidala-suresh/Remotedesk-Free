@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  # Node.js WebRTC Signaling & Rendezvous Server
+  signaling:
+    image: node:24-alpine
+    container_name: remotedesk-signaling
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - ./server-node:/app
+    environment:
+      - PORT=8088
+      - COTURN_AUTH_SECRET=remotedesk_turn_secret_2026
+      - COTURN_SERVER_URL=turn:coturn:3478
+    ports:
+      - "8088:8088"
+    command: sh -c "npm install && node server.js"
+    depends_on:
+      - coturn
+
+  # coturn STUN / TURN Server for NAT Traversal and Encrypted Relay
+  coturn:
+    image: coturn/coturn:latest
+    container_name: remotedesk-coturn
+    restart: unless-stopped
+    network_mode: "host"
+    volumes:
+      - ./coturn/turnserver.conf:/etc/coturn/turnserver.conf:ro
+    command:
+      - "-c"
+      - "/etc/coturn/turnserver.conf"

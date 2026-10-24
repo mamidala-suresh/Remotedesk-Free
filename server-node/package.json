@@ -1,0 +1,20 @@
+{
+  "name": "remotedesk-signaling-node",
+  "version": "1.0.0",
+  "description": "Production WebRTC Signaling & Rendezvous Server for RemoteDesk Free",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "webrtc",
+    "signaling",
+    "remote-desktop",
+    "coturn"
+  ],
+  "author": "RemoteDesk Free Contributors",
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^8.22.0"
+  }
+}
