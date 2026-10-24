@@ -1,7 +1,7 @@
 # RemoteDesk Free
 
 > **Production-Oriented, High-Performance, Open-Source Remote Desktop Application for Windows**  
-> *An open, self-hostable alternative to AnyDesk and TeamViewer without subscription fees, proprietary cloud dependencies, advertisements, or device limits.*
+> *An open, self-hostable alternative to Remote Access Tool without subscription fees, proprietary cloud dependencies, advertisements, or device limits.*
 
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%2F%2011%20(64--bit)-blue.svg)](#)
 [![Rust](https://img.shields.io/badge/Language-Rust%202021-orange.svg)](#)
