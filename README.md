@@ -13,7 +13,7 @@
 
 ## 1. Key Features
 
-- **AnyDesk-Style 9-Digit Device IDs**: Deterministically generated from hardware fingerprints (e.g. `482 910 231`) for consistent identification across reboots.
+- **RemoteDesk-Free-Style 9-Digit Device IDs**: Deterministically generated from hardware fingerprints (e.g. `482 910 231`) for consistent identification across reboots.
 - **Real-Time High-FPS Screen Streaming**: Windows GDI / BitBlt capture engine with pure-Rust JPEG compression, delta frame skip, and low-latency HTML5 Canvas rendering.
 - **Full Remote Input Control**: Hardware mouse movement (normalized `0..65535`), left/right/middle clicks, dragging, scrolling, virtual keys, scancodes, and Unicode typing using Windows `SendInput`.
 - **Multi-Monitor Support**: Real-time display detection and switching between connected monitors.
